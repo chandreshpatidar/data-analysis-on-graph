@@ -1,0 +1,74 @@
+[
+  {
+    "monthName": "January",
+    "shortMonthName": "Jan",
+    "year": 2000,
+    "totalBirth": 5000
+  },
+  {
+    "monthName": "February",
+    "shortMonthName": "Feb",
+    "year": 2000,
+    "totalBirth": 10000
+  },
+  {
+    "monthName": "March",
+    "shortMonthName": "Mar",
+    "year": 2000,
+    "totalBirth": 3000
+  },
+  {
+    "monthName": "April",
+    "shortMonthName": "Apr",
+    "year": 2000,
+    "totalBirth": 7000
+  },
+  {
+    "monthName": "May",
+    "shortMonthName": "May",
+    "year": 2000,
+    "totalBirth": 8000
+  },
+  {
+    "monthName": "June",
+    "shortMonthName": "June",
+    "year": 2000,
+    "totalBirth": 11000
+  },
+  {
+    "monthName": "July",
+    "shortMonthName": "Jul",
+    "year": 2000,
+    "totalBirth": 9000
+  },
+  {
+    "monthName": "August",
+    "shortMonthName": "Aug",
+    "year": 2000,
+    "totalBirth": 9500
+  },
+  {
+    "monthName": "September",
+    "shortMonthName": "Sep",
+    "year": 2000,
+    "totalBirth": 8000
+  },
+  {
+    "monthName": "October",
+    "shortMonthName": "Oct",
+    "year": 2000,
+    "totalBirth": 10500
+  },
+  {
+    "monthName": "November",
+    "shortMonthName": "Nov",
+    "year": 2000,
+    "totalBirth": 10000
+  },
+  {
+    "monthName": "December",
+    "shortMonthName": "Dec",
+    "year": 2000,
+    "totalBirth": 9000
+  }
+]
