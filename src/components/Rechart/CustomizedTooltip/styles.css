@@ -1,0 +1,36 @@
+.tooltip-wrapper {
+  height: 50px;
+  width: 150px;
+  background-color: cornflowerblue;
+  border-radius: 10px;
+  padding: 8px;
+  border-color: cornflowerblue;
+  text-align: center;
+}
+
+.tooltip-label {
+  color: azure;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.tooltip-value {
+  color: azure;
+  font-size: 10px;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+.tooltip-wrapper:after {
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-style: solid;
+  border-width: 10px 10px 0 10px;
+  border-color: cornflowerblue transparent transparent transparent;
+}
