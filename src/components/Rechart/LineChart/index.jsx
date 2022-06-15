@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Line, XAxis, YAxis, Tooltip, Bar, ComposedChart } from 'recharts';
 
 import { CustomizedTooltip } from '../CustomizedTooltip';
+import { Loader } from '../../Loader';
 import {
   barProps,
   composedChartProps,
@@ -14,17 +15,22 @@ import {
 import { getTooltipStyles } from './utils/getTooltipStyles';
 
 export const LineChart = ({ chartData }) => {
+  const [isLoadedData, setIsLoadedData] = useState(false);
+
   useEffect(() => {
     // Run after graph has been loaded.
     const timeout = setTimeout(() => {
-      const bars = document.querySelectorAll('.recharts-rectangle');
+      const lineDots = document.querySelectorAll('.recharts-line-dot');
 
-      if (bars?.length) {
-        bars.forEach((bar, index) => {
-          bar.id = chartData[index].shortMonthName;
+      if (lineDots?.length) {
+        lineDots.forEach((lineDot, index) => {
+          lineDot.id = chartData[index].shortMonthName;
         });
+        setIsLoadedData(true);
+      } else {
+        alert('Something went wrong!');
       }
-    }, 1000);
+    }, 2000);
 
     return () => {
       clearTimeout(timeout);
@@ -34,12 +40,12 @@ export const LineChart = ({ chartData }) => {
 
   const handleMouseMoveOverChart = (event) => {
     if (event.isTooltipActive) {
-      // Get bar element by DOM API
-      const bar = document?.getElementById(event.activeLabel);
-      if (!bar) return;
+      // Get line dot element by DOM API
+      const lineDot = document?.getElementById(event.activeLabel);
+      if (!lineDot) return;
 
-      const barX = bar.getBoundingClientRect().x;
-      const barY = bar.getBoundingClientRect().y;
+      const lineDotX = lineDot.getBoundingClientRect().x;
+      const lineDotY = lineDot.getBoundingClientRect().y;
 
       // Get tooltip element by DOM API
       const tooltip = document.querySelector('.recharts-tooltip-wrapper');
@@ -47,31 +53,38 @@ export const LineChart = ({ chartData }) => {
 
       const tooltipHeight = tooltip.getBoundingClientRect().height;
 
-      // Get bar element's container by DOM API
-      const barElementPosition = document
+      // Get line dot element's container by DOM API
+      const lineDotElementPosition = document
         .getElementsByClassName('recharts-bar')[0]
         .getBoundingClientRect();
 
       // Rewrite tooltip styles
       tooltip.style = getTooltipStyles(
-        barX - barElementPosition.x,
-        barY - tooltipHeight
+        lineDotX - lineDotElementPosition.x,
+        lineDotY - tooltipHeight
       );
     }
   };
 
   return (
-    <ComposedChart
-      {...composedChartProps}
-      data={chartData}
-      onMouseMove={handleMouseMoveOverChart}
-    >
-      <XAxis {...xAxisProps} />
-      <YAxis {...yAxisProps} />
-      <Bar {...barProps} />
-      <Line {...lineProps} />
-      <Tooltip {...tooltipProps} content={<CustomizedTooltip />} />
-    </ComposedChart>
+    <>
+      <ComposedChart
+        style={{ visibility: isLoadedData ? 'visible' : 'hidden' }}
+        {...composedChartProps}
+        data={chartData}
+        onMouseMove={handleMouseMoveOverChart}
+      >
+        <XAxis {...xAxisProps} />
+        <YAxis {...yAxisProps} />
+        <Bar {...barProps} />
+        <Line {...lineProps} />
+        <Tooltip {...tooltipProps} content={<CustomizedTooltip />} />
+      </ComposedChart>
+
+      {!isLoadedData && <Loader />}
+
+      {isLoadedData && <p>Birth Graphical Representation in year 2000</p>}
+    </>
   );
 };
 

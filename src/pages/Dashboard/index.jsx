@@ -9,7 +9,6 @@ export const Dashboard = () => {
     <div className="dashboard-container">
       <div className="birth-graph-container">
         <LineChart chartData={birthData} />
-        <p>Birth Graphical Representation in year 2000</p>
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ export const yAxisProps = {
 };
 
 export const barProps = {
-  dataKey: 'totalBirth',
+  dataKey: 'year',
   stroke: 'cornflowerblue',
   fill: 'cornflowerblue',
   strokeOpacity: 0.7,
